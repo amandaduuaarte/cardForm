@@ -1,39 +1,27 @@
 import React from 'react';
 
-import IconSvg from '../../assets/icons/Icon.svg';
-import {
-  Container,
-  Front,
-  HolderContainer,
-  InformationContainer,
-  LogoFrontContainer,
-  NumberContainer,
-  Typography,
-} from './styles';
+import {Container} from './styles';
+import CardBack from './components/back/Index';
+import CardFront from './components/front';
 
-const Card: React.FC = () => {
+interface CardProps {
+  isFront: boolean;
+  cardData: {
+    cardNumber: string;
+  };
+}
+const Card: React.FC<CardProps> = ({isFront, cardData}: CardProps) => {
   return (
-    <Container colors={['#030712', '#595959']}>
-      <Front>
-        <LogoFrontContainer>
-          <IconSvg />
-        </LogoFrontContainer>
-        <NumberContainer>
-          <Typography size={20}>XXXX-XXXX-XXXX-XXXX</Typography>
-        </NumberContainer>
-
-        <InformationContainer>
-          <HolderContainer>
-            <Typography>CardHolder</Typography>
-            <Typography>XXXX XXXX</Typography>
-          </HolderContainer>
-
-          <HolderContainer>
-            <Typography>CardHolder</Typography>
-            <Typography>XXXX XXXX</Typography>
-          </HolderContainer>
-        </InformationContainer>
-      </Front>
+    <Container colors={['#030712', '#595959']} accessible={true}>
+      {isFront ? (
+        <CardFront
+          cardHolder="Amanda Linda"
+          expiresIn="12/33"
+          cardNumber={cardData.cardNumber}
+        />
+      ) : (
+        <CardBack cvv="123" />
+      )}
     </Container>
   );
 };
