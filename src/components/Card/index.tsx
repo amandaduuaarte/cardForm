@@ -8,6 +8,8 @@ interface CardProps {
   isFront: boolean;
   cardData: {
     cardNumber: string;
+    cardHolder: string;
+    expiresIn: string;
   };
 }
 const Card: React.FC<CardProps> = ({isFront, cardData}: CardProps) => {
@@ -15,9 +17,9 @@ const Card: React.FC<CardProps> = ({isFront, cardData}: CardProps) => {
     <Container colors={['#030712', '#595959']} accessible={true}>
       {isFront ? (
         <CardFront
-          cardHolder="Amanda Linda"
-          expiresIn="12/33"
-          cardNumber={cardData.cardNumber}
+          cardHolder={cardData.cardHolder || 'Joe Doe'}
+          expiresIn={cardData.expiresIn || 'XX/XX'}
+          cardNumber={cardData.cardNumber || 'XXXX XXXX XXXX XXXX'}
         />
       ) : (
         <CardBack cvv="123" />

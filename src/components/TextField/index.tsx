@@ -1,25 +1,25 @@
 import React from 'react';
 
-import {TextInput} from 'react-native/types';
+import {TextInputProps} from 'react-native/types';
 import {Control, Controller} from 'react-hook-form';
 
 import {Container, Input, Label} from './styles';
 
-interface TextFieldProps extends TextInput {
+interface TextFieldProps extends TextInputProps {
   control: Control | any;
   name: string;
   size: number;
   label: string;
+  isActive?: boolean;
   placeholder?: string;
-  inputType?: 'decimal-pad' | 'default';
 }
 const TextField: React.FC<TextFieldProps> = ({
   control,
   name,
   size,
   label,
+  isActive,
   placeholder,
-  inputType = 'default',
   ...rest
 }) => {
   return (
@@ -30,10 +30,10 @@ const TextField: React.FC<TextFieldProps> = ({
         <Container>
           <Label>{label}</Label>
           <Input
+            isActive={isActive}
             value={value}
             onChangeText={onChange}
             placeholder={placeholder}
-            keyboardType={inputType}
             maxLength={size}
             {...rest}
           />
