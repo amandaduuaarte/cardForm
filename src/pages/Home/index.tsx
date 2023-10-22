@@ -47,6 +47,7 @@ const Home: React.FC = () => {
     cardNumber: watch('cardNumber'),
     cardHolder: watch('cardHolder'),
     expiresIn: watch('expiresDate'),
+    cvv: watch('securyCode'),
   };
 
   return (

@@ -10,6 +10,7 @@ interface CardProps {
     cardNumber: string;
     cardHolder: string;
     expiresIn: string;
+    cvv: string;
   };
 }
 const Card: React.FC<CardProps> = ({isFront, cardData}: CardProps) => {
@@ -22,7 +23,7 @@ const Card: React.FC<CardProps> = ({isFront, cardData}: CardProps) => {
           cardNumber={cardData.cardNumber || 'XXXX XXXX XXXX XXXX'}
         />
       ) : (
-        <CardBack cvv="123" />
+        <CardBack cvv={cardData.cvv || '***'} />
       )}
     </Container>
   );
