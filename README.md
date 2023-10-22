@@ -2,6 +2,7 @@
 
 Frontend Project - Card Form
 
+![form-preview](/src/assets/readme/cardformtest.mov)
 ## Description
 
 Simple card registration form, with movement according to the selected field.
